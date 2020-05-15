@@ -13,9 +13,10 @@ CharField to put the content of the post in
 IntegerField for up votes
 IntegerField for down votes
 DateTimeField for submission time
+
 Front end:
 
-Homepage that displays boasts and roasts, sorted by time submitted (hint --> https://docs.djangoproject.com/en/3.0/ref/models/querysets/#order-by (Links to an external site.)Links to an external site.)
+Homepage that displays boasts and roasts, sorted by time submitted (hint --> https://docs.djangoproject.com/en/3.0/ref/models/querysets/#order-by (Links to an external site.)
 Buttons to filter the content by either boasts or roasts, sorted by time submitted
 Upvote and downvote buttons for each boast and roast
 when clicked, these buttons affect the numbers on the relevant post appropriately
