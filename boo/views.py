@@ -24,6 +24,8 @@ def index(request):
             elif sort_method == 'oldest':
                 context['posts'] = posts.order_by('submit_time')
             elif sort_method == 'liked':
+                # this post helped me with getting the sorting to work:
+                # https://stackoverflow.com/questions/51929887/not-supported-between-instances-of-method-and-method-python-django/51929973
                 posts = sorted(posts, key=lambda x: -x.score())
                 context['posts'] = posts
             elif sort_method == 'disliked':
