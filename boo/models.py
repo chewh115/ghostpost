@@ -12,7 +12,11 @@ from django.core.validators import MinValueValidator
 # Create your models here.
 class BoastAndRoast(models.Model):
     boast_or_roast = models.BooleanField()
+    title = models.CharField(max_length=30)
     post = models.CharField(max_length=280)
-    up_votes = models.IntegerField(validators=[MinValueValidator(0)])
-    down_votes = models.IntegerField(validators=[MinValueValidator(0)])
+    up_votes = models.IntegerField(default=0, editable=False, validators=[MinValueValidator(0)])
+    down_votes = models.IntegerField(default=0, editable=False, validators=[MinValueValidator(0)])
     submit_time = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.title
