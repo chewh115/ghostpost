@@ -11,10 +11,21 @@
   {% csrf_token %} {{ form.as_p }}
   <input type="submit" value="Sort" />
 </form>
+<div id="views">
+  <a href="/">See all posts</a>
+  <a href="/boasts">See only boasts</a>
+  <a href="/roasts">See only roasts</a>
+</div>
 {% for post in posts %}
 <h5 class="postTitle">{{post.title}}</h5>
 <p class="post">{{post.post}}</p>
-
+<p>This post's score is {{post.score}}</p>
+<button id="upvote">
+  <a href="{% url 'upvote' post_id=post.id %}">Upvote</a>
+</button>
+<button id="downvote">
+  <a href="{% url 'downvote' post_id=post.id %}">Downvote</a>
+</button>
 {% endfor %}
 <h5><a href='{% url "submit" %}'>Submit your own</a></h5>
 {% endblock %}

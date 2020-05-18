@@ -20,3 +20,6 @@ class BoastAndRoast(models.Model):
 
     def __str__(self):
         return self.title
+    
+    def score(self):
+        return self.up_votes - self.down_votes
