@@ -14,8 +14,8 @@ class SortPosts(forms.Form):
     SORT_CHOICES = [
         ('newest', 'Newest'),
         ('oldest', 'Oldest'),
-        ('liked', 'Most upvotes'),
-        ('disliked', 'Most downvotes')
+        ('liked', 'Most liked'),
+        ('disliked', 'Least liked')
     ]
     sorting_posts = forms.ChoiceField(
         choices=SORT_CHOICES

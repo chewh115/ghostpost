@@ -23,6 +23,12 @@ def index(request):
                 context['posts'] = posts.order_by('-submit_time')
             elif sort_method == 'oldest':
                 context['posts'] = posts.order_by('submit_time')
+            elif sort_method == 'liked':
+                posts = sorted(posts, key=lambda x: -x.score())
+                context['posts'] = posts
+            elif sort_method == 'disliked':
+                posts = sorted(posts, key=lambda x: x.score())
+                context['posts'] = posts
             return render(request, 'index.html', context)
             
     return render(request, 'index.html', context)
