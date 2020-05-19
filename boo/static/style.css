@@ -1,3 +1,30 @@
 h1 {
-  color: cornflowerblue;
+  color: #2c2a3b;
+}
+
+footer {
+  border-top: 2px solid lightgray;
+  margin-top: 3em;
+}
+
+footer p {
+  display: float;
+  justify-content: center;
+}
+
+button {
+  width: 100px;
+  font-size: 0.75em;
+}
+
+#boast {
+  width: 30em;
+  border: 1px solid #2c2a3b;
+  background-color: rgba(75, 189, 19, 0.25);
+}
+
+#roast {
+  width: 30em;
+  border: 1px solid #2c2a3b;
+  background-color: rgba(212, 9, 6, 0.25);
 }
