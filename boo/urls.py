@@ -6,6 +6,8 @@ urlpatterns = [
     path('submit/', views.submit, name='submit'),
     path('boasts/', views.index, name='boasts'),
     path('roasts/', views.index, name='roasts'),
+    path('most/', views.index, name='mostliked'),
+    path('least/', views.index, name='leastliked'),
     path('upvote/<int:post_id>/', views.up_vote, name='upvote'),
     path('downvote/<int:post_id>/', views.down_vote, name='downvote')
 ]

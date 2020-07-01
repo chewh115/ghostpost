@@ -8,31 +8,17 @@ from boo.forms import BoastOrRoastForm, SortPosts
 # Create your views here.
 def index(request):
     context = {}
-    posts =  BoastAndRoast.objects.all()
+    posts =  BoastAndRoast.objects.all().order_by('-submit_time')
     context['posts'] = posts
     context['form'] = SortPosts()
     if 'boasts' in request.path:
         context['posts'] = posts.filter(boast_or_roast=True)
     if 'roasts' in request.path:
         context['posts'] = posts.filter(boast_or_roast=False)
-    if request.method == 'POST':
-        form = SortPosts(request.POST)
-        if form.is_valid():
-            sort_method = form.cleaned_data.get('sorting_posts')
-            if sort_method == 'newest':
-                context['posts'] = posts.order_by('-submit_time')
-            elif sort_method == 'oldest':
-                context['posts'] = posts.order_by('submit_time')
-            elif sort_method == 'liked':
-                # this post helped me with getting the sorting to work:
-                # https://stackoverflow.com/questions/51929887/not-supported-between-instances-of-method-and-method-python-django/51929973
-                posts = sorted(posts, key=lambda x: -x.score())
-                context['posts'] = posts
-            elif sort_method == 'disliked':
-                posts = sorted(posts, key=lambda x: x.score())
-                context['posts'] = posts
-            return render(request, 'index.html', context)
-            
+    if 'most' in request.path:
+        context['posts'] = sorted(posts, key=lambda post: post.score(), reverse=True)
+    if 'least' in request.path:
+        context['posts'] = sorted(posts, key=lambda post: post.score())
     return render(request, 'index.html', context)
 
 

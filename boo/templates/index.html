@@ -7,14 +7,14 @@
 -->
 {% extends 'base.html' %} {% block content %}
 <h1>Ya Boasted/Ya Burnt</h1>
-<forms action="" , method="POST">
-  {% csrf_token %} {{ form.as_p }}
-  <input id="sort" type="submit" value="Sort" />
-</forms>
+<h5><a href='{% url "submit" %}'>Submit your own</a></h5>
+<br/>
 <div id="views">
   <a href="/">See all posts</a>
   <a href="/boasts">See only boasts</a>
   <a href="/roasts">See only roasts</a>
+  <a href="/most">Most popular posts</a>
+  <a href="/least">Least popular posts</a>
 </div>
 {% for post in posts %}
 <h5 class="postTitle">{{post.title}}</h5>
@@ -27,5 +27,4 @@
   <a href="{% url 'downvote' post_id=post.id %}">Downvote</a>
 </button>
 {% endfor %}
-<h5><a href='{% url "submit" %}'>Submit your own</a></h5>
 {% endblock %}

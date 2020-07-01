@@ -8,15 +8,3 @@ class BoastOrRoastForm(forms.Form):
         widget=forms.RadioSelect,
         choices=BOAST_OR_ROAST
     )
-
-
-class SortPosts(forms.Form):
-    SORT_CHOICES = [
-        ('newest', 'Newest'),
-        ('oldest', 'Oldest'),
-        ('liked', 'Most liked'),
-        ('disliked', 'Least liked')
-    ]
-    sorting_posts = forms.ChoiceField(
-        choices=SORT_CHOICES
-    )
